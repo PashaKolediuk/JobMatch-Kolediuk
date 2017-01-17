@@ -1,0 +1,56 @@
+<web-app  xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+          version="3.1">
+
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>tmp.jsp</welcome-file>
+  </welcome-file-list>
+
+  <context-param>
+    <param-name>upload.location</param-name>
+    <param-value>/upload</param-value>
+  </context-param>
+  
+  <servlet>
+    <servlet-name>Controller</servlet-name>
+    <servlet-class>com.epam.jobmatch.controller.Controller</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Controller</servlet-name>
+    <url-pattern>/controller</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ImageController</servlet-name>
+    <servlet-class>com.epam.jobmatch.controller.ImageUpload</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ImageController</servlet-name>
+    <url-pattern>/imageController</url-pattern>
+  </servlet-mapping>
+
+  <filter>
+    <filter-name>CharsetFilter</filter-name>
+    <filter-class>com.epam.jobmatch.controller.filter.CharsetFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CharsetFilter</filter-name>
+    <servlet-name>Controller</servlet-name>
+  </filter-mapping>
+
+  <listener>
+    <listener-class>com.epam.jobmatch.controller.listener.ContextListener</listener-class>
+  </listener>
+
+  <error-page>
+    <error-code>404</error-code>
+    <location>/jsp/error.jsp</location>
+  </error-page>
+
+  <session-config>
+    <session-timeout>180</session-timeout>
+  </session-config>
+
+</web-app>

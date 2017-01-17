@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+    <!--Commands-->
+
+    <entry key="command.sign_up">com.epam.jobmatch.command.impl.sign_up_command.SignUpCommand</entry>
+    <entry key="command.edit">com.epam.jobmatch.command.impl.edit_command.EditInfoCommand</entry>
+    <entry key="command.get_info">com.epam.jobmatch.command.impl.get_info_command.GetInfoCommand</entry>
+    <entry key="command.get_list">com.epam.jobmatch.command.impl.get_list_command.GetListCommand</entry>
+    <entry key="command.locale">com.epam.jobmatch.command.impl.locale_command.LocaleCommand</entry>
+    <entry key="command.sign_in">com.epam.jobmatch.command.impl.sign_in_command.SignInCommand</entry>
+    <entry key="command.sign_out">com.epam.jobmatch.command.impl.sign_out_command.SignOutCommand</entry>
+    <entry key="command.delete">com.epam.jobmatch.command.impl.delete_command.DeleteCommand</entry>
+    <entry key="command.image">com.epam.jobmatch.command.impl.image_command.ImageCommand</entry>
+
+    <!--Types-->
+
+    <!--Edit Info Types-->
+    <entry key="type.edit.company">com.epam.jobmatch.command.impl.edit_command.type_impl.CompanyInfoEditingType</entry>
+    <entry key="type.edit.result">com.epam.jobmatch.command.impl.edit_command.type_impl.RespondEditingType</entry>
+    <entry key="type.edit.applicant">com.epam.jobmatch.command.impl.edit_command.type_impl.ApplicantInfoEditingType</entry>
+    <entry key="type.edit.employee_profile">com.epam.jobmatch.command.impl.edit_command.type_impl.EmployeeProfileEditingType</entry>
+    <entry key="type.edit.employee_password">com.epam.jobmatch.command.impl.edit_command.type_impl.EmployeePasswordEditingType</entry>
+    <entry key="type.edit.applicant_profile">com.epam.jobmatch.command.impl.edit_command.type_impl.ApplicantProfileEditingType</entry>
+    <entry key="type.edit.applicant_password">com.epam.jobmatch.command.impl.edit_command.type_impl.ApplicantPasswordEditingType</entry>
+    <entry key="type.edit.vacancy">com.epam.jobmatch.command.impl.edit_command.type_impl.VacancyInfoEditingType</entry>
+    <entry key="type.edit.image">com.epam.jobmatch.command.impl.image_command.ImageCommand</entry>
+
+    <!--Get Info Types-->
+    <entry key="type.get_info.company">com.epam.jobmatch.command.impl.get_info_command.type_impl.CompanyInfoType</entry>
+    <entry key="type.get_info.vacancy">com.epam.jobmatch.command.impl.get_info_command.type_impl.VacancyInfoType</entry>
+    <entry key="type.get_info.respond_of_vacancy">com.epam.jobmatch.command.impl.get_info_command.type_impl.RespondOfVacancyInfoType</entry>
+    <entry key="type.get_info.respond_of_applicant">com.epam.jobmatch.command.impl.get_info_command.type_impl.RespondOfApplicantInfoType</entry>
+    <entry key="type.get_info.index">com.epam.jobmatch.command.impl.get_info_command.type_impl.IndexInfoType</entry>
+
+    <!--Get List Types-->
+    <entry key="type.get_list.employee">com.epam.jobmatch.command.impl.get_list_command.type_impl.EmployeeListType</entry>
+    <entry key="type.get_list.respond_of_vacancy">com.epam.jobmatch.command.impl.get_list_command.type_impl.RespondListOfVacancyType</entry>
+    <entry key="type.get_list.respond_of_applicant">com.epam.jobmatch.command.impl.get_list_command.type_impl.RespondListOfApplicantType</entry>
+    <entry key="type.get_list.search">com.epam.jobmatch.command.impl.get_list_command.type_impl.SearchListType</entry>
+    <entry key="type.get_list.vacancy_by_id">com.epam.jobmatch.command.impl.get_list_command.type_impl.VacancyListOfCompanyType</entry>
+
+    <!--Sign Up Types-->
+    <entry key="type.sign_up.applicant">com.epam.jobmatch.command.impl.sign_up_command.type_impl.ApplicantSignUpType</entry>
+    <entry key="type.sign_up.company">com.epam.jobmatch.command.impl.sign_up_command.type_impl.CompanySignUpType</entry>
+    <entry key="type.sign_up.employee">com.epam.jobmatch.command.impl.sign_up_command.type_impl.EmployeeSignUpType</entry>
+    <entry key="type.sign_up.respond">com.epam.jobmatch.command.impl.sign_up_command.type_impl.RespondSignUpType</entry>
+    <entry key="type.sign_up.vacancy">com.epam.jobmatch.command.impl.sign_up_command.type_impl.VacancySignUpType</entry>
+
+    <!--Delete Types-->
+    <entry key="type.delete.respond_of_applicant">com.epam.jobmatch.command.impl.delete_command.type_impl.RespondOfApplicantDeleteType</entry>
+    <entry key="type.delete.vacancy">com.epam.jobmatch.command.impl.delete_command.type_impl.VacancyDeleteType</entry>
+    <entry key="type.delete.employee">com.epam.jobmatch.command.impl.delete_command.type_impl.EmployeeDeleteType</entry>
+
+    <!--Image Types-->
+    <entry key="type.image.edit">com.epam.jobmatch.command.impl.image_command.type_impl.ImageEditingType</entry>
+
+</properties>
+
+

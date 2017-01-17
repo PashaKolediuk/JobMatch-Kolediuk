@@ -1,0 +1,6 @@
+package com.epam.jobmatch.command.util;
+
+public enum TypeEnum {
+    COMPANY, EMPLOYEE, VACANCY, VACANCY_BY_ID, APPLICANT, RESPOND_OF_VACANCY,
+    RESPOND_OF_APPLICANT, SEARCH, EMPLOYEE_PROFILE, IMAGE, INDEX
+}

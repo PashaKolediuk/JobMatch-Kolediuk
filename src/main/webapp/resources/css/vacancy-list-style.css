@@ -1,0 +1,113 @@
+ul{
+    list-style-type: none;
+}
+
+@font-face {
+    font-family: Roboto-black;
+    src: url(../fonts/Roboto-Black.ttf);
+}
+
+.vacancy-list{
+    margin-top: 20px;
+}
+
+.vacancy-list ul{
+    padding: 0;
+}
+
+.vacancy-list ul li{
+    padding: 20px 0;
+}
+
+.company-image{
+    padding: 0 20px;
+}
+
+.company-image img{
+    width: 100px;
+    height: 100px;
+}
+
+.company-name, .vacancy-name, .company-address{
+    font-weight: bold;
+    font-family: Roboto-black, sans-serif;
+    font-size: 11pt;
+    padding: 0 10px;
+}
+
+.vacancy-name{
+    font-size: 15pt;
+    width: 500px;
+}
+
+.company-address, .vacancy-description{
+    font-weight: normal;
+    font-family: sans-serif;
+    padding: 3px 10px 3px 10px;
+}
+
+.company-name > a:link,
+.company-name > a:visited,
+.company-address{
+    color: #58595B;
+    text-decoration: none;
+}
+
+.company-name a:hover{
+    color: #000;
+}
+
+.vacancy-name > a:link,
+.vacancy-name > a:visited{
+    color: #009DDC;
+    text-decoration: none;
+}
+
+.vacancy-name a:hover{
+    color: #000;
+}
+
+.vacancy-salary{
+    padding: 0 10px;
+}
+
+.apply-button{
+    width: 100px;
+}
+
+.apply-button input[type='submit']{
+    background-color: #58595B;
+    border-style: none;
+    float: right;
+    margin: 0 10px;
+    border-radius: 5px;
+    font-size: 14pt;
+    width: 90px;
+    height: 50px;
+}
+
+.vacancy-description{
+    overflow: hidden;
+    padding: 7px 10px 0 10px;
+    height: 85px;
+}
+
+.vacancy-description-wrapper {
+    column-width: 300px;
+    height: 100%;
+}
+
+.vacancy-date{
+    padding: 10px;
+}
+
+.vacancy-sort{
+    position: fixed;
+    top: 80px;
+    right: 70px;
+    padding: 20px;
+    width: 350px;
+    border-radius: 12px;
+    background-color: #CCCCCC;
+}
+

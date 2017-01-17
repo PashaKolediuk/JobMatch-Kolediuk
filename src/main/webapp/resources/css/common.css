@@ -1,0 +1,214 @@
+.serviceBox{
+    margin-top: 60px;
+    text-align: center;
+    min-height: 420px;
+}
+.serviceBox .service-icon{
+    width: 60px;
+    height: 86px;
+    border-top: 3px solid #211a0f;
+    border-bottom: 3px solid #211a0f;
+    margin: 0 auto 25px;
+    position: relative;
+    transition: all 0.3s ease-in-out 0s;
+}
+.serviceBox .service-icon:before{
+    content: "";
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 22px;
+    right: -18px;
+    border-bottom: 3px solid #211a0f;
+    border-right: 3px solid #211a0f;
+    z-index: 1;
+    transform: scaleY(1.7) rotate(-45deg);
+    transition: all 0.3s ease-in-out 0s;
+}
+.serviceBox .service-icon:after{
+    content: "";
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    bottom: 22px;
+    left: -18px;
+    border-top: 3px solid #211a0f;
+    border-left: 3px solid #211a0f;
+    z-index: 1;
+    transform: scaleY(1.7) rotate(-45deg);
+    transition: all 0.3s ease-in-out 0s;
+}
+.serviceBox:hover .service-icon,
+.serviceBox:hover .service-icon:before,
+.serviceBox:hover .service-icon:after{
+    border-color: #009DDC;
+}
+.serviceBox .service-icon i{
+    font-size: 40px;
+    color: #211a0f;
+    margin-top: 22px;
+    transition: all 0.3s ease-in-out 0s;
+}
+.serviceBox:hover .service-icon i{
+    color: #009DDC;
+}
+.serviceBox .title{
+    font-size: 24px;
+    color: #211a0f;
+    margin-bottom: 20px;
+    position: relative;
+}
+.serviceBox .title:after{
+    content: "";
+    display: block;
+    width: 0;
+    height: 5px;
+    margin: 0 auto;
+    background: #009DDC;
+    transition: all 0.3s ease-in-out 0s;
+}
+.serviceBox:hover .title:after{
+    width: 70px;
+    margin: 15px auto 23px;
+}
+.serviceBox .description{
+    font-size: 14px;
+    color: #9e9e9e;
+    line-height: 25px;
+}
+
+
+@font-face {
+    font-family: Ostrich-regular;
+    src: url(../fonts/OpenSans-CondLight.ttf);
+}
+
+.empty-list{
+    margin: 30px;
+    text-align: center;
+    font-size: 20pt;
+    font-family: Ostrich-regular;
+    color: #000;
+}
+
+.company-info{
+    padding: 40px;
+}
+
+.employee-info, .vacancy-info{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+
+.vertical-section{
+    vertical-align: top;
+}
+
+.msg {
+    position: relative;
+    left: -10px;
+    top: -5px;
+    background: #fefefe;
+    color: #666666;
+    width: 330px;
+    font-weight: bold;
+    font-size: small;
+    padding: 12px 12px 12px 16px;
+    border-top: solid 3px #CCCCCC;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 10px 10px -5px rgba(0, 0, 0, .08);
+}
+
+.msg-warning {
+    border-color: rgba(255, 165, 0, .5);
+}
+
+.msg-danger-text {
+    color: #c9302c;
+}
+
+.z-depth-5 {
+     -webkit-box-shadow: 0 17px 17px 0 rgba(0,0,0,0.15),0 27px 55px 0 rgba(0,0,0,0.3);
+     box-shadow: 0 17px 17px 0 rgba(0,0,0,0.15),0 27px 55px 0 rgba(0,0,0,0.3);
+ }
+
+.z-depth-3 {
+    -webkit-box-shadow: 0 11px 7px 0 rgba(0,0,0,0.19),0 13px 25px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 11px 7px 0 rgba(0,0,0,0.19),0 13px 25px 0 rgba(0,0,0,0.3);
+}
+
+.z-depth-1 {
+    -webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37)
+}
+
+.top-company-image{
+    padding: 0 10px;
+}
+
+ul.statistics{
+    list-style-type: none;
+}
+
+table.statistics-table{
+    margin-bottom: 10px;
+    min-height: 80px;
+}
+@font-face {
+    font-family: Roboto-black;
+    src: url(../fonts/Roboto-Black.ttf);
+}
+
+.top-company-name, .top-vacancy-name, .top-company-address{
+    font-weight: bold;
+    font-family: Roboto-black, sans-serif;
+    font-size: 11pt;
+    padding: 0 10px;
+}
+
+.top-vacancy-name{
+    font-size: 15pt;
+    width: 500px;
+}
+
+.top-company-address{
+    font-weight: normal;
+    font-family: sans-serif;
+    padding: 0 10px;
+}
+
+.top-company-name > a:link,
+.top-company-name > a:visited,
+.top-company-address{
+    color: #58595B;
+    text-decoration: none;
+}
+
+.top-company-name a:hover{
+    color: #000;
+}
+
+.top-vacancy-name > a:link,
+.top-vacancy-name > a:visited{
+    color: #009DDC;
+    text-decoration: none;
+}
+
+.top-vacancy-name a:hover{
+    color: #000;
+}
+.top-vacancy-date{
+    padding: 10px;
+}
+
+.pagination{
+    text-align: center;
+}
+
+
+
+
