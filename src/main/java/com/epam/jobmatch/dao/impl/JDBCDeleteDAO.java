@@ -27,23 +27,15 @@ public class JDBCDeleteDAO implements DeleteDAO {
         try {
             connection = connectionPool.takeConnection();
 
-            connection.setAutoCommit(false);
-
             preparedStatement = connection.prepareStatement(DELETE_RESPOND_FOR_APPLICANT);
             preparedStatement.setInt(1, idApplicant);
             preparedStatement.setString(2, idVacancy);
-            preparedStatement.executeUpdate();
 
-            connection.commit();
+            preparedStatement.executeUpdate();
 
         } catch (ConnectionPoolException e) {
             throw new DAOException("Error during taking connection from connection pool", e);
         } catch (SQLException e) {
-            try {
-                connection.rollback();
-            } catch (SQLException e1) {
-                log.error(e1);
-            }
             throw new DAOException("SQLException during respond deleting", e);
         } finally {
             try {

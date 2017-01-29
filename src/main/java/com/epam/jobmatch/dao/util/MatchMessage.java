@@ -1,5 +1,9 @@
 package com.epam.jobmatch.dao.util;
 
+
+/**
+ * Describes fail messages
+ */
 public class MatchMessage {
     public static final String USER_EXISTS = "user_exists";
     public static final String COMPANY_EXISTS = "company_exists";

@@ -1,5 +1,10 @@
 package com.epam.jobmatch.dao.connection_pool.exception;
 
+
+/**
+ * Thrown when some kind of exceptional situation
+ * during connection pool work has occurred
+ */
 public class ConnectionPoolException extends Exception {
     private static final long serialVersionUID = 1L;
 

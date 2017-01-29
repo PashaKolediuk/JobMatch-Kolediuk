@@ -1,5 +1,10 @@
 package com.epam.jobmatch.bean.entity.filter;
 
+
+/**
+ * Describes employee filter parameters for
+ * searching necessary employees
+ */
 public class EmployeeFilter {
 
     private int idCompany;

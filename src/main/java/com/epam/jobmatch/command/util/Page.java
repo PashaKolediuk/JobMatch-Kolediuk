@@ -1,5 +1,9 @@
 package com.epam.jobmatch.command.util;
 
+
+/**
+ * Describes all pages to which request can be redirected
+ */
 public class Page {
 
     public static final String INDEX = "/index.jsp?";
@@ -13,6 +17,6 @@ public class Page {
     public static final String APPLICANT_REGISTRATION = "/jsp/registration/applicantRegistration.jsp?";
 
     public static final String APPLICANT_EDITING = "/jsp/editing/editingApplicantInfo.jsp?";
-    public static final String EMPLOYEE_EDITING = "/jsp/editing/editingApplicantInfo.jsp?";
+    public static final String EMPLOYEE_EDITING = "/jsp/editing/editingEmployeeInfo.jsp?";
 }
 

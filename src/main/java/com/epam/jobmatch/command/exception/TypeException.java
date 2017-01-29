@@ -1,5 +1,10 @@
 package com.epam.jobmatch.command.exception;
 
+
+/**
+ * Thrown when some kind of exceptional situation
+ * during match type class has occurred
+ */
 public class TypeException extends Exception {
 
     private static final long serialVersionUID = 1L;

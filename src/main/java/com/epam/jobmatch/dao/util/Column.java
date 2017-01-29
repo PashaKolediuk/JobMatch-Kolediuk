@@ -1,5 +1,9 @@
 package com.epam.jobmatch.dao.util;
 
+
+/**
+ * Describes column names in data source
+ */
 public class Column {
 
     public static final String EMAIL = "email";

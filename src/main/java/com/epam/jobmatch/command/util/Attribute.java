@@ -1,5 +1,9 @@
 package com.epam.jobmatch.command.util;
 
+
+/**
+ * Describes all attributes which are sent to client side
+ */
 public class Attribute {
 
     public static final String EMPLOYEE = "employee";

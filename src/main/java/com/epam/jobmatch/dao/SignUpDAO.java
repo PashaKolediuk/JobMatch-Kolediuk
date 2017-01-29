@@ -9,10 +9,54 @@ import com.epam.jobmatch.dao.exception.MatchingException;
 
 public interface SignUpDAO {
 
+	/**
+	 * Handle company registration
+	 *
+	 * @param company entered company information
+	 *
+	 * @return employee object
+	 *
+	 * @throws DAOException
+	 * @throws MatchingException
+	 */
 	Employee companyRegistration(Company company) throws DAOException, MatchingException;
+	/**
+	 * Handle applicant registration
+	 *
+	 * @param applicant entered applicant information
+	 *
+	 * @return applicant object
+	 *
+	 * @throws DAOException
+	 * @throws MatchingException
+	 */
 	Applicant applicantRegistration(Applicant applicant) throws DAOException, MatchingException;
+	/**
+	 * Handle employee registration
+	 *
+	 * @param employee entered employee information
+	 *
+	 * @throws DAOException
+	 * @throws MatchingException
+	 */
 	void employeeRegistration(Employee employee) throws DAOException, MatchingException;
+	/**
+	 * Handle vacancy registration
+	 *
+	 * @param vacancy entered vacancy information
+	 *
+	 * @throws DAOException
+	 */
 	void vacancyRegistration(Vacancy vacancy) throws DAOException;
+	/**
+	 * Handle respond registration
+	 *
+	 * @param idApplicant current applicant's id
+	 * @param idVacancy selected vacancy's id
+	 *
+	 * @throws DAOException
+	 * @throws MatchingException
+	 */
 	void respondRegistration(int idApplicant, int idVacancy) throws DAOException, MatchingException;
 
 }

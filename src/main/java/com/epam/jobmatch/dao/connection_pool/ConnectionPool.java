@@ -2,6 +2,7 @@ package com.epam.jobmatch.dao.connection_pool;
 
 import com.epam.jobmatch.dao.connection_pool.exception.ConnectionPoolException;
 
+import javax.sql.PooledConnection;
 import java.sql.*;
 import java.util.Map;
 import java.util.Properties;
@@ -36,12 +37,24 @@ public class ConnectionPool {
         }
     }
 
+    /** Get connection pool instance.
+     *
+     * Method returns the single instance of ConnectionPool class
+     *
+     * @return  connection pool
+     */
     public static synchronized ConnectionPool getInstance() {
         if (instance == null)
             instance = new ConnectionPool();
         return instance;
     }
 
+    /** Set several connections to data source.
+     *
+     * During initialization ready connection queue is initialized
+     *
+     * @throws ConnectionPoolException
+     * */
     public void initialize() throws ConnectionPoolException {
         try {
             Class.forName(DRIVER_NAME);
@@ -59,6 +72,12 @@ public class ConnectionPool {
         }
     }
 
+
+    /**
+     * Close connections in both available and used connections queues
+     *
+     * @throws ConnectionPoolException
+     */
     public void clear() throws ConnectionPoolException {
         closeConnectionsQueue(availableConnections);
         closeConnectionsQueue(usedConnections);
@@ -68,13 +87,23 @@ public class ConnectionPool {
         Connection connection = null;
         while ((connection = queue.poll()) != null) {
             try {
-                connection.close();
+                if (!connection.getAutoCommit()) {
+                    connection.commit();
+                }
+                ((PooledConnection)connection).reallyClose();
             } catch (SQLException e) {
                 throw new ConnectionPoolException("SQLException during connectionPool closing", e);
             }
         }
     }
 
+    /**
+     * Take a connection to data source
+     *
+     * If there is no available connection, method will be waiting for it
+     *
+     * @throws ConnectionPoolException
+     */
     public Connection takeConnection() throws ConnectionPoolException {
         Connection connection = null;
         try {
@@ -86,16 +115,16 @@ public class ConnectionPool {
         return connection;
     }
 
-    /* Обертка для Connection необходима для корректного переопределения
-    * метода close(), который будет возвращать соединения в пул.
-    * Так же обертка дает возможность реализовать отлавливание исключений при работе
-    * с соединением, и его последующее закрытие без добавления обратно в пул */
     private class PooledConnection implements Connection {
         private Connection connection;  //final
 
         public PooledConnection(Connection connection) throws SQLException {
             this.connection = connection;
             this.connection.setAutoCommit(true);
+        }
+
+        void reallyClose() throws SQLException{
+            connection.close();
         }
 
         @Override

@@ -7,8 +7,14 @@ ul{
     src: url(../fonts/Roboto-Black.ttf);
 }
 
+@font-face {
+    font-family: OpenSans;
+    src: url(../fonts/OpenSans-CondLight.ttf);
+}
+
 .vacancy-list{
     margin-top: 20px;
+    margin-bottom: 50px;
 }
 
 .vacancy-list ul{
@@ -51,6 +57,7 @@ ul{
 .company-address{
     color: #58595B;
     text-decoration: none;
+    transition: all 0.4s;
 }
 
 .company-name a:hover{
@@ -61,6 +68,7 @@ ul{
 .vacancy-name > a:visited{
     color: #009DDC;
     text-decoration: none;
+    transition: all 0.4s;
 }
 
 .vacancy-name a:hover{
@@ -69,21 +77,6 @@ ul{
 
 .vacancy-salary{
     padding: 0 10px;
-}
-
-.apply-button{
-    width: 100px;
-}
-
-.apply-button input[type='submit']{
-    background-color: #58595B;
-    border-style: none;
-    float: right;
-    margin: 0 10px;
-    border-radius: 5px;
-    font-size: 14pt;
-    width: 90px;
-    height: 50px;
 }
 
 .vacancy-description{
@@ -101,13 +94,23 @@ ul{
     padding: 10px;
 }
 
+.vacancy-sort-label{
+    padding: 0;
+    font-family: Roboto-black;
+    font-size: 12pt;
+}
+
+.sort-button{
+    float: right;
+    background-color: #009DDC;
+}
+
 .vacancy-sort{
     position: fixed;
-    top: 80px;
+    top: 90px;
     right: 70px;
     padding: 20px;
-    width: 350px;
+    width: 370px;
     border-radius: 12px;
     background-color: #CCCCCC;
 }
-

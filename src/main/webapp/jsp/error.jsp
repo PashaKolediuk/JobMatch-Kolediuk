@@ -5,6 +5,8 @@
     <meta charset="utf-8"/>
     <title>Job Match</title>
 
+    <link href="${pageContext.request.contextPath}/resources/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
     <link href="${pageContext.request.contextPath}/resources/css/error-page-style.css" rel="stylesheet">
 </head>
 <body>

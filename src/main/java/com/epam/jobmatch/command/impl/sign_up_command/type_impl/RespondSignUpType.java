@@ -3,7 +3,6 @@ package com.epam.jobmatch.command.impl.sign_up_command.type_impl;
 import com.epam.jobmatch.bean.entity.user.Applicant;
 import com.epam.jobmatch.command.impl.Type;
 import com.epam.jobmatch.command.util.Attribute;
-import com.epam.jobmatch.command.util.Page;
 import com.epam.jobmatch.command.util.Parameter;
 import com.epam.jobmatch.service.SignUpService;
 import com.epam.jobmatch.service.exception.ServiceException;

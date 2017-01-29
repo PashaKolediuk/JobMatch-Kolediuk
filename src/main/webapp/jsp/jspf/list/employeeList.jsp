@@ -18,45 +18,47 @@
 
                         </div>
                         <div class="col col-xs-6 text-right">
-                            <button type="button" class="btn btn-primary" data-toggle="collapse"
+                            <button type="button" class="btn btn-labeled btn-info standart-button"
+                                    data-toggle="collapse"
                                     data-target="#filter-panel">
-                                <span class="glyphicon glyphicon-cog"></span>
+                                <i class="fa fa-filter" aria-hidden="true"></i>
                                 ${filter}
                             </button>
                             <form action="<c:url value="/jsp/registration/employeeRegistration.jsp"/>">
-                                <button type="submit" class="btn btn-sm btn-info btn-create">${add_new}</button>
+                                <button type="submit" class="btn btn-labeled btn-info standart-button">
+                                    <span class="btn-label"><i class="fa fa-plus"
+                                                               aria-hidden="true"></i></span> ${add_new}</button>
                             </form>
                         </div>
                         <div class="col col-xs-12">
 
-                            <div id="filter-panel" class="collapse filter-panel">
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
+                            <div id="filter-panel" class="collapse filler filter-panel">
+                                <div class="panel panel-default filter">
+                                    <div class="panel-body filter centered">
                                         <form class="form-inline" role="form">
                                             <input type="hidden" name="command" value="get_list">
                                             <input type="hidden" name="type" value="employee">
                                             <input type="hidden" name="page" value="1">
-
                                             <div class="form-group">
                                                 <label class="filter-col" for="fullNameFilter">${full_name}:</label>
                                                 <input type="text" class="form-control input-sm" id="fullNameFilter"
-                                                       name="fullName">
-                                            </div> <!-- form group [rows] -->
+                                                       name="fullName" value="${param.fullName}">
+                                            </div>
                                             <div class="form-group">
                                                 <label class="filter-col" for="emailFilter">${email}:</label>
                                                 <input type="text" class="form-control input-sm" id="emailFilter"
-                                                       name="email">
-                                            </div><!-- form group [search] -->
+                                                       name="email" value="${param.email}">
+                                            </div>
                                             <div class="form-group">
                                                 <label class="filter-col" for="phoneFilter">${phone}:</label>
                                                 <input type="text" class="form-control input-sm" id="phoneFilter"
-                                                       name="phone">
-                                            </div> <!-- form group [order by] -->
+                                                       name="phone" value="${param.phone}">
+                                            </div>
                                             <div class="form-group">
 
-                                                <button type="submit" class="btn btn-default filter-col">
+                                                <button type="submit" class="btn btn-default filter-col masterTooltip"
+                                                        title="${filter}">
                                                     <span class="glyphicon glyphicon-record"></span>
-                                                    <%--${filter}--%>
                                                 </button>
                                             </div>
                                         </form>
@@ -71,7 +73,7 @@
                 </div>
                 <c:if test="${param.fail != null}">
                     <div>
-                        <div class="msg msg-warning msg-danger-text">
+                        <div class="msg msg-warning msg-danger-text col-md-offset-4">
                             <span class="glyphicon glyphicon-exclamation-sign"></span>
                                 ${failMessage}</div>
                     </div>
@@ -79,18 +81,20 @@
 
                 <div class="panel-body">
                     <c:if test="${fn:length(requestScope.employeeList) == 0}">
-                        ${empty_list}
+                        <div class="empty-list">
+                                ${empty_list}
+                        </div>
                     </c:if>
                     <c:if test="${fn:length(requestScope.employeeList) > 0}">
                         <table class="table table-striped table-bordered table-list">
-                            <thead>
+                            <thead class="table-head">
                             <tr>
-                                <th class="hidden-xs number">#</th>
-                                <th class="id">ID</th>
-                                <th>${full_name}</th>
-                                <th>${email}</th>
-                                <th>${phone}</th>
-                                <th class="text-center"><em class="fa fa-cog"></em></th>
+                                <th class="text-center col-md-1">#</th>
+                                <th class="text-center col-md-1">ID</th>
+                                <th class="text-center col-md-3">${full_name}</th>
+                                <th class="text-center col-md-3">${email}</th>
+                                <th class="text-center col-md-2">${phone}</th>
+                                <th class="text-center col-md-2"><em class="fa fa-cog"></em></th>
                             </tr>
                             </thead>
 
@@ -101,39 +105,40 @@
                                 <div class="panel-group" id="accordion${employeeCount.count}">
                                     <div class="panel panel-default no-border">
                                         <tr>
-                                            <td class="hidden-xs">${(param.page-1)*5+employeeCount.count}.</td>
-                                            <td>${employee.id}</td>
-                                            <td>${employee.fullName}</td>
-                                            <td>${employee.email}</td>
-                                            <td>${employee.phone}</td>
+                                            <td class="text-center">${(param.page-1)*5+employeeCount.count}.</td>
+                                            <td class="text-center">${employee.id}</td>
+                                            <td class="text-center">${employee.fullName}</td>
+                                            <td class="text-center">${employee.email}</td>
+                                            <td class="text-center">${employee.phone}</td>
                                             <td align="center">
                                                 <form action="<c:url value="/controller"/>" method="post">
                                                     <input type="hidden" name="command" value="delete">
                                                     <input type="hidden" name="type" value="employee">
                                                     <input type="hidden" name="id" value="${employee.id}">
-
-                                                    <button type="submit" class="btn btn-danger"><em
-                                                            class="fa fa-trash">
-                                                            ${delete}
-                                                    </em></button>
-
-                                                    <div class="panel-heading">
-                                                        <h4 class="panel-title">
-                                                            <a data-toggle="collapse"
-                                                               data-parent="#accordion${employeeCount.count}"
-                                                               href="#collapseTwo${employeeCount.count}">
-                                                                <button class="btn btn-primary">
-                                                                        ${edit}
-                                                                </button>
-
-                                                            </a>
-                                                        </h4>
+                                                    <div class="btn-group">
+                                                        <button type="submit" class="btn btn-danger masterTooltip"
+                                                                data-toggle="confirmation"
+                                                                data-placement="left"
+                                                                data-singleton="true"
+                                                                data-popout="true"
+                                                                data-btn-ok-class="btn-xs btn-danger"
+                                                                data-btn-ok-label="${yes}"
+                                                                data-btn-cancel-label="${no}"
+                                                                data-content="${are_you_sure}"
+                                                                title="${delete}">
+                                                            <em class="fa fa-trash"></em>
+                                                        </button>
+                                                        <button class="btn btn-primary masterTooltip"
+                                                                title="${edit}" data-toggle="collapse"
+                                                                data-parent="#accordion${employeeCount.count}"
+                                                                href="#collapseTwo${employeeCount.count}">
+                                                            <i class="fa fa-pencil-square-o"
+                                                               aria-hidden="true"></i>
+                                                        </button>
                                                     </div>
                                                 </form>
 
                                             </td>
-
-
                                         </tr>
                                         <tr>
                                             <td colspan="6" class="no-padding">
@@ -174,31 +179,56 @@
 
                                                                         <div class="form-group col-md-6">
                                                                             <label for="fullName">${full_name}</label>
-                                                                            <input type="text" class="form-control"
-                                                                                   name="fullName" id="fullName"
-                                                                                   value="${employee.fullName}">
+                                                                            <div class="input-group"
+                                                                                 data-validate="name">
+                                                                                <input type="text" class="form-control"
+                                                                                       name="fullName" id="fullName"
+                                                                                       value="${employee.fullName}"
+                                                                                       required>
+                                                                                <span class="input-group-addon danger masterTooltip" title="${validation_name}">
+                                                                                    <span class="glyphicon glyphicon-remove"></span>
+                                                                                </span>
+                                                                            </div>
                                                                         </div>
 
 
                                                                         <div class="form-group col-md-6">
                                                                             <label for="email">${email}</label>
-                                                                            <input type="email" class="form-control"
-                                                                                   name="email" id="email"
-                                                                                   value="${employee.email}">
+                                                                            <div class="input-group"
+                                                                                 data-validate="email">
+                                                                                <input type="email" class="form-control"
+                                                                                       name="email" id="email"
+                                                                                       value="${employee.email}"
+                                                                                       required>
+                                                                                <span class="input-group-addon danger masterTooltip" title="${validation_email}">
+                                                                                    <span class="glyphicon glyphicon-remove"></span>
+                                                                                </span>
+                                                                            </div>
                                                                         </div>
 
                                                                         <div class="form-group col-md-6">
                                                                             <label for="phone">${phone}</label>
-                                                                            <input type="text" class="form-control"
-                                                                                   name="phone" id="phone"
-                                                                                   value="${employee.phone}">
+                                                                            <div class="input-group"
+                                                                                 data-validate="phone">
+                                                                                <input type="text" class="form-control"
+                                                                                       name="phone" id="phone"
+                                                                                       value="${employee.phone}"
+                                                                                       required>
+                                                                                <span class="input-group-addon danger masterTooltip" title="${validation_phone}">
+                                                                                    <span class="glyphicon glyphicon-remove"></span>
+                                                                                </span>
+                                                                            </div>
                                                                         </div>
 
                                                                         <div class="form-group col-md-6">
                                                                             <label for="skype">Skype</label>
-                                                                            <input type="text" class="form-control"
-                                                                                   name="skype" id="skype"
-                                                                                   value="${employee.skype}">
+                                                                            <div class="input-group">
+                                                                                <input type="text" class="form-control"
+                                                                                       name="skype" id="skype"
+                                                                                       value="${employee.skype}">
+                                                                                <span class="input-group-addon info"><span
+                                                                                        class="glyphicon glyphicon-asterisk"></span></span>
+                                                                            </div>
                                                                         </div>
 
                                                                     </fieldset>
@@ -231,17 +261,33 @@
 
                                                                         <div class="form-group col-md-6">
                                                                             <label for="password">${password}</label>
-                                                                            <input type="password" class="form-control"
-                                                                                   name="password" id="password"
-                                                                                   placeholder="${password}">
+                                                                            <div class="input-group"
+                                                                                 data-validate="password">
+                                                                                <input type="password"
+                                                                                       class="form-control"
+                                                                                       name="password" id="password"
+                                                                                       placeholder="${password}"
+                                                                                       required>
+                                                                                <span class="input-group-addon danger masterTooltip" title="${validation_password}">
+                                                                                    <span class="glyphicon glyphicon-remove"></span>
+                                                                                </span>
+                                                                            </div>
                                                                         </div>
 
                                                                         <div class="form-group col-md-6">
                                                                             <label for="confirmPassword">${confirm_password}</label>
-                                                                            <input type="password" class="form-control"
-                                                                                   name="confirmPassword"
-                                                                                   id="confirmPassword"
-                                                                                   placeholder="${confirm_password}">
+                                                                            <div class="input-group"
+                                                                                 data-validate="confirmPassword">
+                                                                                <input type="password"
+                                                                                       class="form-control"
+                                                                                       name="confirmPassword"
+                                                                                       id="confirmPassword"
+                                                                                       placeholder="${confirm_password}"
+                                                                                       required>
+                                                                                <span class="input-group-addon danger masterTooltip" title="${validation_confirm_password}">
+                                                                                    <span class="glyphicon glyphicon-remove"></span>
+                                                                                </span>
+                                                                            </div>
                                                                         </div>
 
 

@@ -38,6 +38,7 @@
   <filter-mapping>
     <filter-name>CharsetFilter</filter-name>
     <servlet-name>Controller</servlet-name>
+    <servlet-name>ImageController</servlet-name>
   </filter-mapping>
 
   <listener>

@@ -16,78 +16,166 @@
                     <div class="row">
                         <div class="col col-xs-6">
                             <h3 class="panel-title">${respond_list}</h3>
+                        </div>
+                        <div class="col col-xs-6 text-right">
                             <form action="<c:url value="/controller"/>" method="get">
                                 <input type="hidden" name="command" value="get_list">
                                 <input type="hidden" name="type" value="vacancy_by_id">
                                 <input type="hidden" name="page" value="1">
                                 <input type="hidden" name="vacancyName" value="">
-                                <button type="submit">${back}</button>
+                                <button type="submit" class="btn btn-labeled btn-info back-button">
+                                    <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                                    ${back}
+                                </button>
                             </form>
-                        </div>
-                        <div class="col col-xs-6 text-right">
-                            <button type="button" class="btn btn-primary" data-toggle="collapse"
+                            <button type="button" class="btn btn-labeled btn-info standart-button"
+                                    data-toggle="collapse"
                                     data-target="#filter-panel">
-                                <span class="glyphicon glyphicon-cog"></span>
+                                <i class="fa fa-filter" aria-hidden="true"></i>
                                 ${filter}
                             </button>
                         </div>
                         <div class="col col-xs-12">
 
                             <div id="filter-panel" class="collapse filter-panel">
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <form class="form-inline" role="form">
+                                <div class="panel panel-default filter">
+                                    <div class="panel-body filter">
+                                        <form class="form-inline " role="form">
                                             <input type="hidden" name="command" value="get_list">
                                             <input type="hidden" name="type" value="respond_of_vacancy">
                                             <input type="hidden" name="page" value="1">
                                             <input type="hidden" name="idVacancy" value="${param.idVacancy}">
 
-                                            <div class="form-group">
-                                                <label class="filter-col" for="lastNameFilter">${last_name}:</label>
-                                                <input type="text" class="form-control input-sm" id="lastNameFilter"
-                                                       name="lastName">
-                                            </div> <!-- form group [rows] -->
-                                            <div class="form-group">
-                                                <label class="filter-col" for="emailFilter">${email}:</label>
-                                                <input type="text" class="form-control input-sm" id="emailFilter"
-                                                       name="email">
-                                            </div><!-- form group [search] -->
-                                            <div class="form-group">
-                                                <label class="filter-col" for="phoneFilter">${phone}:</label>
-                                                <input type="text" class="form-control input-sm" id="phoneFilter"
-                                                       name="phone">
-                                            </div> <!-- form group [order by] -->
-                                            <div class="form-group">
-                                                <label class="filter-col" for="stageFilter">${stage}:</label>
-                                                <select class="form-control input-sm" id="stageFilter"
-                                                        name="stage">
-                                                    <option value="phone" selected>${phone_stage}</option>
-                                                    <option value="interview">${interview_stage}</option>
-                                                    <option value="answer">${answer_stage}</option>
-                                                </select>
-                                            </div> <!-- form group [order by] -->
-                                            <div class="form-group">
-                                                <label class="filter-col" for="markFilter">${min_mark}:</label>
-                                                <input type="number" class="form-control input-sm" id="markFilter"
-                                                       name="mark" value="0">
-                                            </div> <!-- form group [order by] -->
-                                            <div class="form-group">
-                                                <input type="radio" name="sort" value="respondDate desc"
-                                                       checked>${by_respond_date}<br>
-                                                <input type="radio" name="sort"
-                                                       value="totalMark desc">${by_mark_decrease}<br>
-                                                <input type="radio" name="sort"
-                                                       value="totalMark ">${by_mark_increase}<br>
-                                                <input type="radio" name="sort"
-                                                       value="conversationDate desc">${by_meeting_date}<br>
-                                            </div>
-                                            <div class="form-group">
 
-                                                <button type="submit" class="btn btn-default filter-col">
-                                                    <span class="glyphicon glyphicon-record"></span>
-                                                    ${filter}
-                                                </button>
+                                            <div class="col-md-10 filter-row">
+                                                <div class="col-md-3 col-md-offset-2" id="filterColumn1">
+
+                                                    <div class="form-group">
+                                                        <label for="lastNameFilter">${last_name}:</label>
+                                                        <input type="text" class="form-control input-normal"
+                                                               id="lastNameFilter"
+                                                               name="lastName"
+                                                               value="${param.lastName}">
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-3" id="filterColumn2">
+
+                                                    <div class="form-group">
+                                                        <label for="emailFilter">${email}:</label>
+                                                        <input type="text" class="form-control input-normal"
+                                                               id="emailFilter"
+                                                               name="email"
+                                                               value="${param.email}">
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-3" id="filterColumn3">
+
+                                                    <div class="form-group">
+                                                        <label for="phoneFilter">${phone}:</label>
+                                                        <input type="text" class="form-control input-normal"
+                                                               id="phoneFilter"
+                                                               name="phone"
+                                                               value="${param.phone}">
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <div class="form-group">
+
+                                                        <button type="submit"
+                                                                class="btn btn-default filter-col filter-button">
+                                                            <span class="glyphicon glyphicon-record"></span>
+                                                            ${filter}
+                                                        </button>
+
+                                                    </div>
+                                                </div>
                                             </div>
+                                            <div class="col-md-10 filter-row">
+                                                <div class="col-md-3 col-md-offset-2" id="filterColumn4">
+
+                                                    <div class="form-group">
+                                                        <label for="markFilter">${min_mark}:</label>
+                                                        <input type="number" class="form-control input-normal"
+                                                               id="markFilter"
+                                                               name="mark" value="${param.mark}">
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-2" id="filterColumn5">
+
+                                                    <div class="form-group">
+                                                        <label for="stageFilter">${stage}:</label>
+                                                        <select class="form-control input-normal" id="stageFilter"
+                                                                name="stage">
+                                                            <c:if test="${param.stage eq ''}">
+                                                                <option value="" selected>${no_matter}</option>
+                                                            </c:if>
+                                                            <c:if test="${param.stage ne ''}">
+                                                                <option value="">${no_matter}</option>
+                                                            </c:if>
+                                                            <c:if test="${param.stage eq 'phone'}">
+                                                                <option value="phone" selected>${phone_stage}</option>
+                                                            </c:if>
+                                                            <c:if test="${param.stage ne 'phone'}">
+                                                                <option value="phone">${phone_stage}</option>
+                                                            </c:if>
+                                                            <c:if test="${param.stage eq 'interview'}">
+                                                                <option value="interview"
+                                                                        selected>${interview_stage}</option>
+                                                            </c:if>
+                                                            <c:if test="${param.stage ne 'interview'}">
+                                                                <option value="interview">${interview_stage}</option>
+                                                            </c:if>
+                                                            <c:if test="${param.stage eq 'answer'}">
+                                                                <option value="answer" selected>${answer_stage}</option>
+                                                            </c:if>
+                                                            <c:if test="${param.stage ne 'answer'}">
+                                                                <option value="answer">${answer_stage}</option>
+                                                            </c:if>
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-3 col-md-offset-1" id="filterColumn6">
+
+                                                    <div class="form-group">
+                                                        <label for="sort">${sort}:</label><br>
+                                                        <select class="form-control input-normal" id="sort"
+                                                                name="sort">
+                                                            <c:if test="${param.sort eq 'respondDate desc'}">
+                                                                <option value="respondDate desc"
+                                                                        selected>${by_respond_date}</option>
+                                                            </c:if>
+                                                            <c:if test="${param.sort ne 'respondDate desc'}">
+                                                                <option value="respondDate desc">${by_respond_date}</option>
+                                                            </c:if>
+                                                            <c:if test="${param.sort eq 'totalMark desc'}">
+                                                                <option value="totalMark desc" selected>${by_mark_decrease}</option>
+                                                            </c:if>
+                                                            <c:if test="${param.sort ne 'totalMark desc'}">
+                                                                <option value="totalMark desc">${by_mark_decrease}</option>
+                                                            </c:if>
+                                                            <c:if test="${param.sort eq 'totalMark'}">
+                                                                <option value="totalMark" selected>${by_mark_increase}</option>
+                                                            </c:if>
+                                                            <c:if test="${param.sort ne 'totalMark'}">
+                                                                <option value="totalMark">${by_mark_increase}</option>
+                                                            </c:if>
+                                                            <c:if test="${param.sort eq 'conversationDate desc'}">
+                                                                <option value="conversationDate desc" selected>${by_meeting_date}</option>
+                                                            </c:if>
+                                                            <c:if test="${param.sort ne 'conversationDate desc'}">
+                                                                <option value="conversationDate desc">${by_meeting_date}</option>
+                                                            </c:if>
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
                                         </form>
                                     </div>
                                 </div>
@@ -100,21 +188,22 @@
 
                 <div class="panel-body">
                     <c:if test="${fn:length(requestScope.respondListOfVacancy) == 0}">
-                        ${empty_list}
+                        <div class="empty-list">
+                                ${empty_list}
+                        </div>
                     </c:if>
                     <c:if test="${fn:length(requestScope.respondListOfVacancy) > 0}">
                         <table class="table table-striped table-bordered table-list">
                             <thead>
                             <tr>
-                                <th class="hidden-xs number">#</th>
-                                <th>${first_name}</th>
-                                <th>${last_name}</th>
-                                <th>${phone}</th>
-                                <th>${email}</th>
-                                <th>${respond_date}</th>
-                                <th>${stage}</th>
-                                <th>${mark}</th>
-                                <th class="text-center"><em class="fa fa-cog"></em></th>
+                                <th class="hidden-xs number col-md-1">#</th>
+                                <th class="text-center col-md-2">${first_name}</th>
+                                <th class="text-center col-md-2">${last_name}</th>
+                                <th class="text-center col-md-2">${phone}</th>
+                                <th class="text-center col-md-2">${email}</th>
+                                <th class="text-center col-md-2">${stage}</th>
+                                <th class="text-center col-md-1">${mark}</th>
+                                <th class="text-center col-md-1"><em class="fa fa-cog"></em></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -124,19 +213,29 @@
                                 <c:set var="respond" scope="page" value="${respondItem.key}"/>
                                 <c:set var="applicant" scope="page" value="${respondItem.value}"/>
                                 <tr>
-                                    <td class="hidden-xs">${(param.page-1)*5+respondCount.count}.</td>
-                                    <td>${applicant.firstName}</td>
-                                    <td>${applicant.lastName}</td>
-                                    <td>${applicant.phone}</td>
-                                    <td>${applicant.email}</td>
-                                    <td>${respond.respondDate}</td>
-                                    <td>${respond.stage}</td>
-                                    <td>${respond.mark}</td>
+                                    <td class="hidden-xs text-center">${(param.page-1)*5+respondCount.count}.</td>
+                                    <td class="text-center">${applicant.firstName}</td>
+                                    <td class="text-center">${applicant.lastName}</td>
+                                    <td class="text-center">${applicant.phone}</td>
+                                    <td class="text-center">${applicant.email}</td>
+                                    <td class="text-center">
+                                        <c:if test="${respond.stage == 'PHONE'}">
+                                            ${phone_stage}
+                                        </c:if>
+                                        <c:if test="${respond.stage == 'INTERVIEW'}">
+                                            ${interview_stage}
+                                        </c:if>
+                                        <c:if test="${respond.stage == 'ANSWER'}">
+                                            ${answer_stage}
+                                        </c:if>
+                                    </td>
+                                    <td class="text-center">${respond.mark}</td>
                                     <td align="center">
-                                        <a class="btn btn-default"
-                                           href="<c:url value="/controller?command=get_info&type=respond_of_vacancy&idApplicant=${respond.idApplicant}&idVacancy=${respond.idVacancy}"/>"><em
-                                                class="fa fa-pencil">${respond_details}</em></a>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                                        <div class="btn-group">
+                                            <a class="btn btn-default btn-lg masterTooltip" title="${respond_details}"
+                                               href="<c:url value="/controller?command=get_info&type=respond_of_vacancy&idApplicant=${respond.idApplicant}&idVacancy=${respond.idVacancy}"/>"><em
+                                                    class="fa fa-pencil"></em></a>
+                                        </div>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -176,5 +275,4 @@
         </div>
 
     </div>
-</div>
 </div>

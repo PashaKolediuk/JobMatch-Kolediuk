@@ -4,17 +4,18 @@
 
 <div class="container">
     <div class="row">
-        <c:if test="${fn:length(requestScope.vacancyList) == 0}">
-            <div class="empty-list">
-                    ${empty_list}
-            </div>
-        </c:if>
         <div class="vacancy-list col-md-8">
+
             <c:if test="${param.fail != null}">
-                <div>
-                    <div class="msg msg-warning msg-danger-text">
-                        <span class="glyphicon glyphicon-exclamation-sign"></span>
-                            ${failMessage}</div>
+                <div class="info message text-center">
+                    <p><span class="glyphicon glyphicon-exclamation-sign"></span>
+                            ${failMessage}</p>
+                </div>
+            </c:if>
+
+            <c:if test="${fn:length(requestScope.vacancyList) == 0}">
+                <div class="empty-list">
+                        ${empty_list}
                 </div>
             </c:if>
             <c:if test="${fn:length(requestScope.vacancyList) > 0}">
@@ -24,13 +25,12 @@
                     <c:set var="vacancy" scope="page" value="${vacancyMapItem.key}"/>
                     <c:set var="company" scope="page" value="${vacancyMapItem.value}"/>
                     <li>
-                        <table>
+                        <table class="vacancy" id="${requestScope.pageCount}">
                             <tbody>
                             <tr>
                                 <td class="company-image" rowspan="4">
                                     <a href="<c:url value="/controller?command=get_info&type=company&idCompany=${company.idCompany}"/>">
                                         <object data="${pageContext.request.contextPath}/upload/${company.idCompany}.png"
-                                                alt="Company logo"
                                                 width="100"
                                                 height="100" type="image/png">
                                             <img src="${pageContext.request.contextPath}/upload/no-image.png"
@@ -54,7 +54,8 @@
                                             <input type="hidden" name="type" value="respond"/>
                                             <input type="hidden" name="idVacancy" value="${vacancy.idVacancy}"/>
 
-                                            <input type="submit" value="Apply">
+                                            <button type="submit" id="${requestScope.pageCount}apply"
+                                                    class="btn btn-info ">${apply}</button>
                                         </form>
                                     </c:if>
                                 </td>
@@ -67,7 +68,7 @@
                             <tr>
                                 <td class="company-address">
                                         ${company.city}, ${company.country}
-                                            <span class="vacancy-date">${vacancy.date}</span>
+                                    <span class="vacancy-date">${vacancy.date}</span>
                                 </td>
                             </tr>
                             <tr>
@@ -113,149 +114,125 @@
                 </ul>
             </nav>
         </div>
-        <div class="vacancy-sort z-depth-3 col-md-4 ">
-            <form role="form" action="<c:url value="/controller"/>" method="get">
+        </c:if>
+        <div class="vacancy-sort z-depth-3 col-md-6 ">
+            <legend>${vacancy_filter}</legend>
+            <form class="form-horizontal" role="form" action="<c:url value="/controller"/>" method="get">
                 <input type="hidden" name="command" value="get_list"/>
                 <input type="hidden" name="type" value="search"/>
                 <input type="hidden" name="page" value="1"/>
                 <input type="hidden" name="search" value="${param.search}">
 
-                <label>${sort}</label>
-                <c:if test="${param.sort eq 'date desc'}">
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="sort" value="date desc"
-                                   checked>
-                                ${by_opening_date}
-                        </label>
+                <div class="form-group">
+                    <label for="sortFilter" class="control-label vacancy-sort-label col-md-4">${sort}:</label>
+                    <div class="col-md-8">
+                        <select name="sort" id="sortFilter" class="form-control">
+                            <c:if test="${param.sort eq 'date desc'}">
+                                <option value="date desc" selected>${by_opening_date}</option>
+                            </c:if>
+                            <c:if test="${param.sort ne 'date desc'}">
+                                <option value="date desc">${by_opening_date}</option>
+                            </c:if>
+                            <c:if test="${param.sort eq 'salary desc'}">
+                                <option value="salary desc" selected>${by_salary_decrease}</option>
+                            </c:if>
+                            <c:if test="${param.sort ne 'salary desc'}">
+                                <option value="salary desc">${by_salary_decrease}</option>
+                            </c:if>
+                            <c:if test="${param.sort eq 'salary '}">
+                                <option value="salary " selected>${by_salary_increase}</option>
+                            </c:if>
+                            <c:if test="${param.sort ne 'salary '}">
+                                <option value="salary ">${by_salary_increase}</option>
+                            </c:if>
+                            <c:if test="${param.sort eq 'requiredExperience asc'}">
+                                <option value="requiredExperience asc" selected>${by_experience_increase}</option>
+                            </c:if>
+                            <c:if test="${param.sort ne 'requiredExperience asc'}">
+                                <option value="requiredExperience asc">${by_experience_increase}</option>
+                            </c:if>
+                        </select>
                     </div>
-                </c:if>
-                <c:if test="${param.sort ne 'date desc'}">
-                    <div class="radio">
-                        <label><input type="radio" name="sort" value="date desc">${by_opening_date}
-                        </label>
-                    </div>
-                </c:if>
-                <c:if test="${param.sort eq 'salary desc'}">
-                    <div class="radio">
-                        <label><input type="radio" name="sort" value="salary desc"
-                                      checked>${by_salary_decrease}</label>
-                    </div>
-                </c:if>
-                <c:if test="${param.sort ne 'salary desc'}">
-                    <div class="radio">
-                        <label><input type="radio" name="sort" value="salary desc">${by_salary_decrease}
-                        </label>
-                    </div>
-                </c:if>
-                <c:if test="${param.sort eq 'salary '}">
-                    <div class="radio">
-                        <label><input type="radio" name="sort" value="salary "
-                                      checked>${by_salary_increase}
-                        </label>
-                    </div>
-                </c:if>
-                <c:if test="${param.sort ne 'salary '}">
-                    <div class="radio">
-                        <label><input type="radio" name="sort" value="salary ">${by_salary_increase}
-                        </label>
-                    </div>
-                </c:if>
-                <c:if test="${param.sort eq 'requiredExperience asc'}">
-                    <div class="radio">
-                        <label><input type="radio" name="sort" value="requiredExperience asc"
-                                      checked>${by_experience_increase}</label>
-                    </div>
-                </c:if>
-                <c:if test="${param.sort ne 'requiredExperience asc'}">
-                    <div class="radio">
-                        <label><input type="radio" name="sort"
-                                      value="requiredExperience asc">${by_experience_increase}</label>
-                    </div>
-                </c:if>
-
-                <label>${experience}</label>
-                <c:if test="${param.experienceFilter eq '0,100'}">
-                    <div class="radio">
-                        <label><input type="radio" name="experienceFilter" value="0,100" checked>${no_matter}</label>
-                    </div>
-                </c:if>
-                <c:if test="${param.experienceFilter ne '0,100'}">
-                    <div class="radio">
-                        <label><input type="radio" name="experienceFilter" value="0,100">${no_matter}</label>
-                    </div>
-                </c:if>
-                <c:if test="${param.experienceFilter eq '0,0'}">
-                    <div class="radio">
-                        <label><input type="radio" name="experienceFilter" value="0,0" checked>${without_experience}
-                        </label>
-                    </div>
-                </c:if>
-                <c:if test="${param.experienceFilter ne '0,0'}">
-                    <div class="radio">
-                        <label><input type="radio" name="experienceFilter" value="0,0">${without_experience}</label>
-                    </div>
-                </c:if>
-                <c:if test="${param.experienceFilter eq '1,3'}">
-                    <div class="radio">
-                        <label><input type="radio" name="experienceFilter" value="1,3" checked>${one_three}</label>
-                    </div>
-                </c:if>
-                <c:if test="${param.experienceFilter ne '1,3'}">
-                    <div class="radio">
-                        <label><input type="radio" name="experienceFilter" value="1,3">${one_three}</label>
-                    </div>
-                </c:if>
-                <c:if test="${param.experienceFilter eq '3,6'}">
-                    <div class="radio">
-                        <label><input type="radio" name="experienceFilter" value="3,6" checked>${three_six}</label>
-                    </div>
-                </c:if>
-                <c:if test="${param.experienceFilter ne '3,6'}">
-                    <div class="radio">
-                        <label><input type="radio" name="experienceFilter" value="3,6">${three_six}</label>
-                    </div>
-                </c:if>
-                <c:if test="${param.experienceFilter eq '6,100'}">
-                    <div class="radio">
-                        <label><input type="radio" name="experienceFilter" value="6,100" checked>${six_and_more}</label>
-                    </div>
-                </c:if>
-                <c:if test="${param.experienceFilter ne '6,100'}">
-                    <div class="radio">
-                        <label><input type="radio" name="experienceFilter" value="6,100">${six_and_more}</label>
-                    </div>
-                </c:if>
-
-                <div class="form-group form-inline">
-                    <label for="salaryFilter">${min_salary}:</label>
-                    <c:if test="${param.salaryFilter != null}">
-                        <input type="number" class="form-control form-group-sm" name="salaryFilter" id="salaryFilter"
-                               value="${param.salaryFilter}">
-                    </c:if>
-                    <c:if test="${param.salaryFilter == null}">
-                        <input type="number" class="form-control form-group-sm" name="salaryFilter" id="salaryFilter"
-                               value="0">
-                    </c:if>
                 </div>
 
-                <div class="form-group form-inline">
-                    <label for="countryFilter">${country}:</label>
-                    <input type="text" class="form-control input-sm" name="countryFilter" id="countryFilter"
-                           value="${param.countryFilter}">
+                <div class="form-group">
+                    <label for="experienceFilter"
+                           class="control-label vacancy-sort-label col-md-4">${experience}:</label>
+                    <div class="col-md-8">
+                        <select name="experienceFilter" id="experienceFilter" class="form-control">
+                            <c:if test="${param.experienceFilter eq '0,100'}">
+                                <option value="0,100" selected>${no_matter}</option>
+                            </c:if>
+                            <c:if test="${param.experienceFilter ne '0,100'}">
+                                <option value="0,100">${no_matter}</option>
+                            </c:if>
+                            <c:if test="${param.experienceFilter eq '0,0'}">
+                                <option value="0,0" selected>${without_experience}</option>
+                            </c:if>
+                            <c:if test="${param.experienceFilter ne '0,0'}">
+                                <option value="0,0">${without_experience}</option>
+                            </c:if>
+                            <c:if test="${param.experienceFilter eq '1,3'}">
+                                <option value="1,3" selected>${one_three}</option>
+                            </c:if>
+                            <c:if test="${param.experienceFilter ne '1,3'}">
+                                <option value="1,3">${one_three}</option>
+                            </c:if>
+                            <c:if test="${param.experienceFilter eq '3,6'}">
+                                <option value="3,6" selected>${three_six}</option>
+                            </c:if>
+                            <c:if test="${param.experienceFilter ne '3,6'}">
+                                <option value="3,6">${three_six}</option>
+                            </c:if>
+                            <c:if test="${param.experienceFilter eq '6,100'}">
+                                <option value="6,100" selected>${six_and_more}</option>
+                            </c:if>
+                            <c:if test="${param.experienceFilter ne '6,100'}">
+                                <option value="6,100">${six_and_more}</option>
+                            </c:if>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="form-group form-inline">
-                    <label for="cityFilter"> ${city}:</label>
-                    <input type="text" class="form-control input-sm" name="cityFilter" id="cityFilter"
-                           value="${param.cityFilter}">
+                <div class="form-group">
+                    <label for="salaryFilter" class="control-label vacancy-sort-label col-md-4">${min_salary}:</label>
+                    <div class="col-md-8">
+                        <c:if test="${param.salaryFilter != null}">
+                            <input type="number" min="0" class="form-control form-group-sm" name="salaryFilter"
+                                   id="salaryFilter"
+                                   value="${param.salaryFilter}">
+                        </c:if>
+                        <c:if test="${param.salaryFilter == null}">
+                            <input type="number" min="0" class="form-control form-group-sm" name="salaryFilter"
+                                   id="salaryFilter"
+                                   value="0">
+                        </c:if>
+                    </div>
                 </div>
 
-                <input type="submit" value="${filter}">
+                <div class="form-group">
+                    <label for="countryFilter" class="control-label vacancy-sort-label col-md-4">${country}:</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control input-sm" name="countryFilter" id="countryFilter"
+                               value="${param.countryFilter}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="cityFilter" class="control-label vacancy-sort-label col-md-4"> ${city}:</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control input-sm" name="cityFilter" id="cityFilter"
+                               value="${param.cityFilter}">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-labeled btn-primary sort-button ">
+                    <i class="fa fa-filter" aria-hidden="true"></i>
+                    ${filter}
+                </button>
             </form>
 
         </div>
-        </c:if>
+
     </div>
-</div>
 </div>

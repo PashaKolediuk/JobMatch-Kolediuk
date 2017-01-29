@@ -1,5 +1,9 @@
 package com.epam.jobmatch.service.exception;
 
+
+/**
+ * Thrown when data from request in not valid
+ */
 public class ValidationException extends Exception {
 
     private static final long serialVersionUID = 1L;

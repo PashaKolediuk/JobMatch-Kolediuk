@@ -1,5 +1,11 @@
 package com.epam.jobmatch.bean.entity.filter;
 
+
+/**
+ * Describes respond filter parameters for
+ * searching necessary applicants with their respond's
+ * information
+ */
 public class RespondFilter {
 
     private int idVacancy;

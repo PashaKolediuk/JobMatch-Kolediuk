@@ -12,7 +12,7 @@
             <ul class="nav navbar-nav navbar-right navbar-main">
                 <li><a href="<c:url value="/index.jsp"/>">${home_page}</a></li>
                 <li><a href="<c:url value="/controller?command=get_list&type=search&page=1&search=&sort=date+desc&experienceFilter=0,100&salaryFilter=0&countryFilter=&cityFilter="/>">${vacancies}</a></li>
-                <li><a href="<c:url value="/index.jsp"/>">${contact}</a></li>
+                <li><a href="<c:url value="/index.jsp#footer"/>">${contact}</a></li>
 
             </ul>
             <div class="search-wrapper">

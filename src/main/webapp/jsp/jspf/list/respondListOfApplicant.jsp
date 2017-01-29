@@ -22,16 +22,19 @@
 
                 <div class="panel-body">
                     <c:if test="${fn:length(requestScope.respondListOfApplicant) == 0}">
-                        ${empty_list}
+                        <div class="empty-list">
+                                ${empty_list}
+                        </div>
                     </c:if>
                     <c:if test="${fn:length(requestScope.respondListOfApplicant) > 0}">
                         <table class="table table-striped table-bordered table-list">
                             <thead>
                             <tr>
-                                <th class="hidden-xs number">#</th>
-                                <th>${vacancy_name}</th>
-                                <th>${respond_date}</th>
-                                <th class="text-center"><em class="fa fa-cog"></em></th>
+                                <th class="text-center col-md-1">#</th>
+                                <th class="text-center col-md-4">${vacancy_name}</th>
+                                <th class="text-center col-md-2">${respond_date}</th>
+                                <th class="text-center col-md-3">${stage}</th>
+                                <th class="text-center col-md-2"><em class="fa fa-cog"></em></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -41,20 +44,41 @@
                                 <c:set var="respond" scope="page" value="${respondItem.key}"/>
                                 <c:set var="vacancy" scope="page" value="${respondItem.value}"/>
                                 <tr>
-                                    <td class="hidden-xs">${(param.page-1)*5+respondCount.count}.</td>
-                                    <td>${vacancy.name}</td>
-                                    <td>${respond.respondDate}</td>
+                                    <td class="text-center">${(param.page-1)*5+respondCount.count}.</td>
+                                    <td class="text-center">${vacancy.name}</td>
+                                    <td class="text-center">${respond.respondDate}</td>
+                                    <td class="text-center">
+                                        <c:if test="${respond.stage == 'PHONE'}">
+                                            ${phone_stage}
+                                        </c:if>
+                                        <c:if test="${respond.stage == 'INTERVIEW'}">
+                                            ${interview_stage}
+                                        </c:if>
+                                        <c:if test="${respond.stage == 'ANSWER'}">
+                                            ${answer_stage}
+                                        </c:if>
+                                    </td>
                                     <td align="center">
-                                        <a class="btn btn-default"
-                                           href="<c:url value="/controller?command=get_info&type=respond_of_applicant&idVacancy=${respond.idVacancy}"/>"><em
-                                                class="fa fa-pencil"> ${respond_details}</em></a>
                                         <form action="<c:url value="/controller"/>" method="post">
                                             <input type="hidden" name="command" value="delete">
                                             <input type="hidden" name="type" value="respond_of_applicant">
                                             <input type="hidden" name="idVacancy" value="${respond.idVacancy}">
-
-                                            <button type="submit" class="btn btn-danger"><em
-                                                    class="fa fa-trash"> ${cancel}</em></button>
+                                            <div class="btn-group">
+                                                <a class="btn btn-default masterTooltip" title="${respond_details}"
+                                                   href="<c:url value="/controller?command=get_info&type=respond_of_applicant&idVacancy=${respond.idVacancy}"/>">
+                                                    <em class="fa fa-pencil"></em></a>
+                                                <button type="submit" class="btn btn-danger masterTooltip"
+                                                        data-toggle="confirmation"
+                                                        data-placement="left"
+                                                        data-singleton="true"
+                                                        data-popout="true"
+                                                        data-btn-ok-class="btn-xs btn-danger"
+                                                        data-btn-ok-label="${yes}"
+                                                        data-btn-cancel-label="${no}"
+                                                        data-content="${are_you_sure}"
+                                                        title="${cancel}">
+                                                    <em class="fa fa-trash"></em></button>
+                                            </div>
                                         </form>
                                     </td>
                                 </tr>

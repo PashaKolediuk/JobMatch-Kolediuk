@@ -2,8 +2,9 @@ package com.epam.jobmatch.command.impl.delete_command.type_impl;
 
 import com.epam.jobmatch.bean.entity.user.Applicant;
 import com.epam.jobmatch.command.impl.Type;
-import com.epam.jobmatch.command.util.*;
-import com.epam.jobmatch.controller.util.CommandEnum;
+import com.epam.jobmatch.command.util.Attribute;
+import com.epam.jobmatch.command.util.Parameter;
+import com.epam.jobmatch.command.util.Request;
 import com.epam.jobmatch.service.DeleteService;
 import com.epam.jobmatch.service.exception.ServiceException;
 import com.epam.jobmatch.service.factory.ServiceFactory;

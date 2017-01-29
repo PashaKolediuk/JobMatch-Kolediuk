@@ -20,9 +20,6 @@ public final class Controller extends HttpServlet {
 
     private static final CommandProvider provider = new CommandProvider();
 
-    private static final String ERROR_PAGE = "/jsp/error.jsp";
-    private static final String COMMAND = "command";
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String pageToRedirect = null;

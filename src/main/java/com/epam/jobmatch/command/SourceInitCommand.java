@@ -16,6 +16,12 @@ public class SourceInitCommand {
             instance = new SourceInitCommand();
         return instance;
     }
+
+    /**
+     * Initiate data source connection
+     *
+     * @throws SourceInitException
+     */
     public void initSource() throws SourceInitException {
         try {
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
@@ -26,6 +32,11 @@ public class SourceInitCommand {
         }
     }
 
+    /**
+     * Destroy data source connection
+     *
+     * @throws SourceInitException
+     */
     public void destroySource() throws SourceInitException {
         try {
             ServiceFactory serviceFactory = ServiceFactory.getInstance();

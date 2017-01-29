@@ -1,5 +1,10 @@
 package com.epam.jobmatch.bean.entity.filter;
 
+
+/**
+ * Describes vacancy filter parameters for
+ * searching necessary vacancies
+ */
 public class VacancyFilter {
 
     private String searchString;

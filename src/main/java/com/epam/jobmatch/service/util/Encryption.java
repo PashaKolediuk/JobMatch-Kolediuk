@@ -13,6 +13,17 @@ public class Encryption {
     private static final String ALGORITHM = "MD5";
     private static final String CHARSET = "UTF-8";
 
+    /**
+     * String encryption.
+     *
+     * Method encrypt string. After encryption entered string will be deleted to avoid stealing
+     *
+     * @param valueToEncrypt string to encrypt
+     *
+     * @return encrypted string
+     *
+     * @throws NoSuchAlgorithmException
+     * */
     public static char[] encryptedValue(char[] valueToEncrypt) throws NoSuchAlgorithmException {
         byte[] byteValue = toBytes(valueToEncrypt);
         MessageDigest messageDigest = MessageDigest.getInstance(ALGORITHM);

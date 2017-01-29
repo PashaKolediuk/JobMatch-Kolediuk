@@ -23,6 +23,7 @@ public class SignUp implements SignUpService {
     @Override
     public Employee companyRegistration(Company company) throws ServiceException, ValidationException {
         ValidationHandler.companyValidation(company);
+        ValidationHandler.employeeValidation(company.getAdmin());
 
         DAOFactory factory = DAOFactory.getInstance();
         SignUpDAO signUpDAO = factory.getSignUpDAO();

@@ -2,8 +2,10 @@ package com.epam.jobmatch.command.impl.sign_in_command;
 
 import com.epam.jobmatch.bean.entity.user.User;
 import com.epam.jobmatch.command.Command;
-import com.epam.jobmatch.command.util.*;
-import com.epam.jobmatch.controller.util.CommandEnum;
+import com.epam.jobmatch.command.util.Attribute;
+import com.epam.jobmatch.command.util.Page;
+import com.epam.jobmatch.command.util.Parameter;
+import com.epam.jobmatch.command.util.Request;
 import com.epam.jobmatch.service.SignInService;
 import com.epam.jobmatch.service.exception.ServiceException;
 import com.epam.jobmatch.service.exception.ValidationException;

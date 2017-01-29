@@ -9,10 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Job Match</title>
 
+    <link href="${pageContext.request.contextPath}/resources/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
     <link href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.css" rel="stylesheet">
 
-    <link href="${pageContext.request.contextPath}/resources/css/navbar-main.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/sign-up-page-style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/navbar-main.css" rel="stylesheet">
 
     <%@ include file="../jspf/localization.jsp" %>
 
@@ -51,41 +54,76 @@
 
                         <div class="form-group col-md-6">
                             <label for="firstName">${first_name}</label>
-                            <input type="text" class="form-control" name="firstName" id="firstName"
-                                   placeholder="${first_name}">
+                            <div class="input-group" data-validate="name">
+                                <input type="text" class="form-control" name="firstName" id="firstName"
+                                       placeholder="${first_name}" required>
+                                <span class="input-group-addon danger masterTooltip" title="${validation_name}">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </span>
+                            </div>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="lastName">${last_name}</label>
-                            <input type="text" class="form-control" name="lastName" id="lastName"
-                                   placeholder="${last_name}">
+                            <div class="input-group" data-validate="name">
+                                <input type="text" class="form-control" name="lastName" id="lastName"
+                                       placeholder="${last_name}" required>
+                                <span class="input-group-addon danger masterTooltip" title="${validation_name}">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </span>
+                            </div>
                         </div>
 
                         <div class="form-group col-md-12">
                             <label for="email">${email}</label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="${email}">
+                            <div class="input-group" data-validate="email">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="${email}"
+                                       required>
+                                <span class="input-group-addon danger masterTooltip" title="${validation_email}">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </span>
+                            </div>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="password">${password}</label>
-                            <input type="password" class="form-control" name="password" id="password"
-                                   placeholder="${password}">
+                            <div class="input-group" data-validate="password">
+                                <input type="password" class="form-control" name="password" id="password"
+                                       placeholder="${password}" required>
+                                <span class="input-group-addon danger masterTooltip" title="${validation_password}">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </span>
+                            </div>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="confirmPassword">${confirm_password}</label>
-                            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword"
-                                   placeholder="${confirm_password}">
+                            <div class="input-group" data-validate="confirmPassword">
+                                <input type="password" class="form-control" name="confirmPassword" id="confirmPassword"
+                                       placeholder="${confirm_password}" required>
+                                <span class="input-group-addon danger masterTooltip" title="${validation_confirm_password}">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </span>
+                            </div>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="phone">${phone}</label>
-                            <input type="text" class="form-control" name="phone" id="phone" placeholder="${phone}">
+                            <div class="input-group" data-validate="phone">
+                                <input type="text" class="form-control" name="phone" id="phone" placeholder="${phone}"
+                                       required>
+                                <span class="input-group-addon danger masterTooltip" title="${validation_phone}">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </span>
+                            </div>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="skype">Skype</label>
-                            <input type="text" class="form-control" name="skype" id="skype" placeholder="Skype">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="skype" id="skype" placeholder="Skype">
+                                <span class="input-group-addon info"><span class="glyphicon glyphicon-asterisk"></span></span>
+                            </div>
                         </div>
 
                     </fieldset>
@@ -95,61 +133,78 @@
 
                         <div class="form-group col-md-6">
                             <label for="country">${country}</label>
-                            <input type="text" class="form-control" name="country" id="country" placeholder="${country}">
+                            <div class="input-group" data-validate="name">
+                                <input type="text" class="form-control" name="country" id="country"
+                                       placeholder="${country}" required>
+                                <span class="input-group-addon danger masterTooltip" title="${validation_name}">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </span>
+                            </div>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="city">${city}</label>
-                            <input type="text" class="form-control" name="city" id="city" placeholder="${city}">
+                            <div class="input-group" data-validate="name">
+                                <input type="text" class="form-control" name="city" id="city" placeholder="${city}"
+                                       required>
+                                <span class="input-group-addon danger masterTooltip" title="${validation_name}">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </span>
+                            </div>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="university">${university}</label>
-                            <input type="text" class="form-control" name="university" id="university"
-                                   placeholder="${university}">
+                            <div class="input-group" data-validate="name">
+                                <input type="text" class="form-control" name="university" id="university"
+                                       placeholder="${university}" required>
+                                <span class="input-group-addon danger masterTooltip" title="${validation_name}">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </span>
+                            </div>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="graduationYear">${graduation_year}</label>
-                            <input type="number" class="form-control" name="graduationYear" id="graduationYear"
-                                   placeholder="${graduation_year}" required/>
+                            <div class="input-group" data-validate="graduationYear">
+                                <input type="number" class="form-control" name="graduationYear" id="graduationYear"
+                                       placeholder="${graduation_year}" required/>
+                                <span class="input-group-addon danger masterTooltip" title="${validation_graduation_year}">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </span>
+                            </div>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="englishLevel">${english_level}</label>
-                            <select class="form-control input-sm" name="englishLevel" id="englishLevel">
-                                <option>A1</option>
-                                <option>A2</option>
-                                <option>B1</option>
-                                <option>B2</option>
-                                <option>C1</option>
-                                <option>C2</option>
-                            </select>
+                            <div class="input-group">
+                                <select class="form-control input-sm" name="englishLevel" id="englishLevel" required>
+                                    <option value="">${choose_english_level}</option>
+                                    <option value="A1">A1</option>
+                                    <option value="A2">A2</option>
+                                    <option value="B1">B1</option>
+                                    <option value="B2">B2</option>
+                                    <option value="C1">C1</option>
+                                    <option value="C2">C2</option>
+                                </select>
+                                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+                            </div>
                         </div>
 
                         <div class="form-group col-md-12">
                             <label for="professionalSkills">${professional_skills}</label>
+                            <div class="input-group">
                             <textarea class="form-control input-sm" name="professionalSkills" id="professionalSkills"
                                       rows="3"></textarea>
+                                <span class="input-group-addon info"><span class="glyphicon glyphicon-asterisk"></span></span>
+                            </div>
                         </div>
 
                     </fieldset>
 
-                    <%--<div class="form-group">
-                        <div class="col-md-12">
-                            <div class="checkbox">
-                                <label>
-                                    <input type_impl="checkbox" value="" id="">
-                                    I accept the <a href="#" >terms and conditions</a>.
-                                </label>
-                            </div>
-                        </div>
-                    </div>--%>
-
-
                     <div class="form-group">
                         <div class="col-md-12">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary" disabled>
                                 ${sign_up}
                             </button>
                         </div>
@@ -164,6 +219,7 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="${pageContext.request.contextPath}/resources/bootstrap/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap-confirmation.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="${pageContext.request.contextPath}/resources/js/page.script.js"></script>
 </body>

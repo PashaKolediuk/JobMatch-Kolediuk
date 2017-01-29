@@ -165,13 +165,13 @@ button.locale-button:hover{
     content: "| ";
 }
 
-
 #toTop{
     position: fixed;
     bottom: 10px;
     right: 10px;
     cursor: pointer;
     display: none;
+    background-color: #009DDC;
 }
 
 

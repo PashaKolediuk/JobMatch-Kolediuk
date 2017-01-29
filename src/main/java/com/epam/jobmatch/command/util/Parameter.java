@@ -1,5 +1,9 @@
 package com.epam.jobmatch.command.util;
 
+
+/**
+ * Describes all parameters which can be accepted form client side
+ */
 public class Parameter {
 
     public static final String PROJECT_URI = "jobmatch";

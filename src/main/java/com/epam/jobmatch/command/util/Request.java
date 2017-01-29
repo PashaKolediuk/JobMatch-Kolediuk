@@ -1,8 +1,11 @@
 package com.epam.jobmatch.command.util;
 
-import com.epam.jobmatch.command.impl.Type;
 import com.epam.jobmatch.controller.util.CommandEnum;
 
+
+/**
+ * Describes request to which user can be redirected
+ */
 public class Request {
 
     public static final String GET_VACANCY_LIST = Page.CONTROLLER + "?" +

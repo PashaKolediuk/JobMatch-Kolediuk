@@ -9,27 +9,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Job Match</title>
 
+    <link href="${pageContext.request.contextPath}/resources/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
     <link href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/bootstrap/css/font-awesome.css" rel="stylesheet">
 
-    <link href="${pageContext.request.contextPath}/resources/css/navbar-main.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/vacancy-list-style.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/employee-list-style.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/navbar-main.css" rel="stylesheet">
+
     <%--<link href="${pageContext.request.contextPath}/resources/css/sign-up-page-style.css" rel="stylesheet">--%> <%--Delete--%>
 
     <%@ include file="jspf/localization.jsp" %>
 
 </head>
 <body>
-
-<c:if test="${applicant != null || employee != null}">
-    <%@ include file="jspf/navbar/authNavbar.jsp" %>
-</c:if>
-<c:if test="${applicant == null && employee == null}">
-    <%@ include file="jspf/navbar/noAuthNavbar.jsp" %>
-</c:if>
-
+<div>
+    <c:if test="${applicant != null || employee != null}">
+        <%@ include file="jspf/navbar/authNavbar.jsp" %>
+    </c:if>
+    <c:if test="${applicant == null && employee == null}">
+        <%@ include file="jspf/navbar/noAuthNavbar.jsp" %>
+    </c:if>
+</div>
 <main>
     <div class="container">
         <div class="row">
@@ -58,19 +61,19 @@
                 <c:if test="${requestScope.respondListOfApplicant!=null}">
                     <%@ include file="jspf/list/respondListOfApplicant.jsp" %>
                 </c:if>
-                <c:if test="${requestScope.statistics!=null}">
-                    <%@ include file="jspf/info/statistics.jsp" %>
-                </c:if>
 
             </div>
         </div>
     </div>
-    </div>
+    <c:if test="${requestScope.statistics!=null}">
+        <%@ include file="jspf/info/statistics.jsp" %>
+    </c:if>
 </main>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="${pageContext.request.contextPath}/resources/bootstrap/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap-confirmation.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="${pageContext.request.contextPath}/resources/js/page.script.js"></script>
 </body>

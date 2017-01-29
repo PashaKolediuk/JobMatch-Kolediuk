@@ -3,7 +3,7 @@ package com.epam.jobmatch.bean.entity.user;
 import com.epam.jobmatch.bean.entity.user.enumiration.Role;
 import com.epam.jobmatch.bean.entity.user.enumiration.Status;
 
-public class    Employee extends User{
+public class Employee extends User{
 
     private int idCompany;
     private String fullName;

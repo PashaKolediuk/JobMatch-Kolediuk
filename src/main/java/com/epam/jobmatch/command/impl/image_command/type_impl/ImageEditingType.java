@@ -3,7 +3,6 @@ package com.epam.jobmatch.command.impl.image_command.type_impl;
 import com.epam.jobmatch.bean.entity.user.Employee;
 import com.epam.jobmatch.command.impl.Type;
 import com.epam.jobmatch.command.util.Attribute;
-import com.epam.jobmatch.command.util.Page;
 import com.epam.jobmatch.command.util.Request;
 import com.epam.jobmatch.service.EditService;
 import com.epam.jobmatch.service.exception.ServiceException;
