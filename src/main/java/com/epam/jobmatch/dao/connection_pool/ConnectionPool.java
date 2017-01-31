@@ -141,6 +141,9 @@ public class ConnectionPool {
                 if (connection.isReadOnly()) {
                     connection.setReadOnly(false);
                 }
+                if (!connection.getAutoCommit()) {
+                    connection.setAutoCommit(true);
+                }
                 if (!usedConnections.remove(this)) {
                     throw new SQLException(
                             "Error while trying to delete connection from used connections queue.");

@@ -44,7 +44,8 @@ public class JDBCEditingDAO implements EditingDAO {
 
     private static final String COMPANY_MATCHING = "SELECT * FROM company WHERE (company.companyName LIKE ? OR company.website LIKE ?) AND company.idCompany NOT LIKE ?";
     private static final String USER_MATCHING = "SELECT applicant.idApplicant FROM applicant WHERE (applicant.email LIKE ? OR applicant.skype LIKE ?) AND applicant.idApplicant NOT LIKE ? " +
-            " union SELECT employee.idEmployee FROM employee WHERE (employee.email LIKE ? OR employee.skype LIKE ?) AND employee.idEmployee NOT LIKE ? ";
+            " AND applicant.skype not LIKE '' " +
+            " union SELECT employee.idEmployee FROM employee WHERE (employee.email LIKE ? OR employee.skype LIKE ?) AND employee.idEmployee NOT LIKE ?  AND employee.skype not LIKE ''";
 
     @Override
     public void editCompanyInfo(Company company) throws DAOException, MatchingException {
@@ -312,7 +313,8 @@ public class JDBCEditingDAO implements EditingDAO {
             preparedStatement.setString(1, employee.getFullName());
             preparedStatement.setString(2, employee.getEmail());
             preparedStatement.setString(3, employee.getPhone());
-            preparedStatement.setString(4, employee.getSkype());
+            preparedStatement.setString(4, employee.getSkype().isEmpty() ?
+                    null : employee.getSkype());
             preparedStatement.setInt(5, employee.getId());
 
             preparedStatement.executeUpdate();
@@ -335,7 +337,8 @@ public class JDBCEditingDAO implements EditingDAO {
             preparedStatement.setString(2, applicant.getFirstName());
             preparedStatement.setString(3, applicant.getLastName());
             preparedStatement.setString(4, applicant.getPhone());
-            preparedStatement.setString(5, applicant.getSkype());
+            preparedStatement.setString(5, applicant.getSkype().isEmpty() ?
+                    null : applicant.getSkype());
             preparedStatement.setString(6, applicant.getCountry());
             preparedStatement.setString(7, applicant.getCity());
             preparedStatement.setString(8, applicant.getUniversity());

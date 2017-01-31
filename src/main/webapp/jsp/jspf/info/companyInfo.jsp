@@ -81,9 +81,11 @@
                         <div class="row">
                                 ${phone}: ${admin.phone}
                         </div>
-                        <div class="row">
-                            Skype: ${admin.skype}
-                        </div>
+                        <c:if test="${admin.skype ne ''}">
+                            <div class="row">
+                                Skype: ${admin.skype}
+                            </div>
+                        </c:if>
                     </div>
                 </div>
             </c:if>

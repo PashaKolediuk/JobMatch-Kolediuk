@@ -16,6 +16,9 @@ import java.io.IOException;
 
 public class RespondSignUpType implements Type {
 
+    private static final String FAIL_PARAMETER = "&fail=respond_exists";
+    private static final String EMPTY_STRING = "";
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ServiceException {
         String pageToRedirect = null;
@@ -30,7 +33,8 @@ public class RespondSignUpType implements Type {
         try {
             signUpService.respondRegistration(userId, vacancyId);
 
-            pageToRedirect = requestPage.substring(requestPage.indexOf(Parameter.PROJECT_URI) + Parameter.PROJECT_URI.length());
+            pageToRedirect = requestPage.substring(requestPage.indexOf(Parameter.PROJECT_URI) + Parameter.PROJECT_URI.length())
+                    .replace(FAIL_PARAMETER, EMPTY_STRING);
 
         } catch (ValidationException e) {
             pageToRedirect = requestPage.substring(requestPage.indexOf(Parameter.PROJECT_URI) + Parameter.PROJECT_URI.length()) +

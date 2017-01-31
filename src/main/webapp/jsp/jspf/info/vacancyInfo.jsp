@@ -19,7 +19,8 @@
                 <div class="col-md-12 ">
                     <h3 class="info-header col-md-5 ">${vacancy_details}</h3>
                     <c:if test="${sessionScope.applicant != null}">
-                        <form class="col-md-1 col-md-offset-10 apply-button" action="<c:url value="/controller"/>" method="post">
+                        <form class="col-md-1 col-md-offset-10 apply-button" action="<c:url value="/controller"/>"
+                              method="post">
 
                             <input type="hidden" name="command" value="sign_up"/>
                             <input type="hidden" name="type" value="respond"/>
@@ -47,17 +48,32 @@
                     <div class="col-md-8">
                         <div class="row">
                             <div class="col-md-12 open-sans-bold">
-                               <h2>${vacancy.name}</h2>
+                                <h2>${vacancy.name}</h2>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 open-sans-bold">
-                                ${salary}: <span class="open-sans-italic">${vacancy.salary}$
+                                ${salary}: <span class="open-sans-italic">
+                                <c:if test="${vacancy.salary == 0}">
+                                    -
+                                </c:if>
+                                    <c:if test="${vacancy.salary > 0}">
+                                        ${vacancy.salary}$
+                                    </c:if>
+                                    </span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 open-sans-bold">
-                                ${required_experience}: <span class="open-sans-italic">${vacancy.requiredExperience}</span>
+                                ${required_experience}:
+                                    <span class="open-sans-italic">
+                                    <c:if test="${vacancy.requiredExperience == 0}">
+                                        -
+                                    </c:if>
+                                    <c:if test="${vacancy.requiredExperience > 0}">
+                                        ${vacancy.requiredExperience}
+                                    </c:if>
+                                </span>
                             </div>
                         </div>
                         <div class="row">

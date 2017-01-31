@@ -63,7 +63,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12 open-sans-bold">
-                                            ${required_experience}: <span class="open-sans-italic">${vacancy.requiredExperience}</span>
+                                            ${required_experience}: <span
+                                            class="open-sans-italic">${vacancy.requiredExperience}</span>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -80,7 +81,7 @@
                         <div class="col-md-12 text-center company-info">
                             <h3 class="info-header">${respond_details}</h3>
                             <div class="row">
-                                    <span class=" open-sans-bold">${stage}:</span>
+                                <span class=" open-sans-bold">${stage}:</span>
                                 <c:if test="${respond.stage == 'PHONE'}">
                                     ${phone_stage}
                                 </c:if>
@@ -92,10 +93,10 @@
                                 </c:if>
                             </div>
                             <div class="row">
-                                    <span class=" open-sans-bold">${respond_date}:</span> ${respond.respondDate}
+                                <span class=" open-sans-bold">${respond_date}:</span> ${respond.respondDate}
                             </div>
                             <div class="row">
-                                    <span class=" open-sans-bold">${conversation_date}:</span>
+                                <span class=" open-sans-bold">${conversation_date}:</span>
                                 <c:if test="${respond.conversationDate == null}">
                                     ${no_conversation}
                                 </c:if>
@@ -134,61 +135,65 @@
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-12 open-sans-bold">
-                                       <h3>${applicantInfo.firstName} ${applicantInfo.lastName}</h3>
+                                    <h3>${applicantInfo.firstName} ${applicantInfo.lastName}</h3>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="row">
                                         <div class="col-md-12">
-                                                <span class="open-sans-bold">${city}, ${country}:</span>
+                                            <span class="open-sans-bold">${city}, ${country}:</span>
                                                 ${applicantInfo.city}, ${applicantInfo.country}
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                               <span class="open-sans-bold">${university}:</span>
-                                               ${applicantInfo.university}, ${applicantInfo.graduationYear}
+                                            <span class="open-sans-bold">${university}:</span>
+                                                ${applicantInfo.university}, ${applicantInfo.graduationYear}
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                                <span class="open-sans-bold">${english_level}:</span>
-                                                 ${applicantInfo.englishLevel}
+                                            <span class="open-sans-bold">${english_level}:</span>
+                                                ${applicantInfo.englishLevel}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="row">
                                         <div class="col-md-12">
-                                                <span class="open-sans-bold">${email}:</span>
-                                                 ${applicantInfo.email}
+                                            <span class="open-sans-bold">${email}:</span>
+                                                ${applicantInfo.email}
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                                <span class="open-sans-bold">${phone}:</span>
-                                                 ${applicantInfo.phone}
+                                            <span class="open-sans-bold">${phone}:</span>
+                                                ${applicantInfo.phone}
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <span class="open-sans-bold">Skype:</span>
-                                             ${applicantInfo.skype}
+                                    <c:if test="${applicantInfo.skype ne ''}">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <span class="open-sans-bold">Skype:</span>
+                                                    ${applicantInfo.skype}
+                                            </div>
                                         </div>
+                                    </c:if>
+                                </div>
+                            </div>
+                            <c:if test="${applicantInfo.professionalSkills ne ''}">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="col-md-12 open-sans-bold">${professional_skills}:</div>
+                                            ${applicantInfo.professionalSkills}
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="col-md-12 open-sans-bold">${professional_skills}:</div>
-                                        ${applicantInfo.professionalSkills}
-                                </div>
-                            </div>
+                            </c:if>
                             <div class="row">
                                 <div class="col-md-4 col-md-offset-8">
-                                        <span class="open-sans-bold">${respond_date}:</span>
-                                         ${respond.respondDate}
+                                    <span class="open-sans-bold">${respond_date}:</span>
+                                        ${respond.respondDate}
                                 </div>
                             </div>
                         </div>
@@ -268,7 +273,7 @@
 
                             <div class="col-md-3">
                                 <button type="submit" class="btn btn-primary standart-button">
-                                    ${edit_result}
+                                        ${edit_result}
                                 </button>
                             </div>
                         </div>

@@ -38,8 +38,8 @@ public class JDBCSignUpDAO implements SignUpDAO {
             " VALUES (?, ?, ?)";
 
     private static final String COMPANY_MATCHING = "SELECT * FROM company WHERE company.companyName LIKE ? OR company.website LIKE ?";
-    private static final String USER_MATCHING = "SELECT applicant.idApplicant FROM applicant WHERE applicant.email LIKE ? OR applicant.skype LIKE ? " +
-            "union SELECT employee.idEmployee FROM employee WHERE employee.email LIKE ? OR employee.skype LIKE ?";
+    private static final String USER_MATCHING = "SELECT applicant.idApplicant FROM applicant WHERE (applicant.email LIKE ? OR applicant.skype LIKE ?)  AND applicant.skype not LIKE '' " +
+            "union SELECT employee.idEmployee FROM employee WHERE (employee.email LIKE ? OR employee.skype LIKE ?)  AND employee.skype not LIKE '' ";
     private static final String RESPOND_MATCHING = "SELECT * FROM respond WHERE respond.idApplicant LIKE ? AND respond.idVacancy LIKE ?";
 
     private static final String ADMIN_INFO = "SELECT * FROM employee WHERE idEmployee = LAST_INSERT_ID()";
@@ -284,7 +284,8 @@ public class JDBCSignUpDAO implements SignUpDAO {
             preparedStatement.setString(2, company.getAdmin().getEmail());
             preparedStatement.setString(3, company.getAdmin().getFullName());
             preparedStatement.setString(4, company.getAdmin().getPhone());
-            preparedStatement.setString(5, company.getAdmin().getSkype());
+            preparedStatement.setString(5, company.getAdmin().getSkype().isEmpty() ?
+                    null : company.getAdmin().getSkype());
             preparedStatement.executeUpdate();
 
         } finally {
@@ -307,7 +308,8 @@ public class JDBCSignUpDAO implements SignUpDAO {
             preparedStatement.setInt(3, employee.getIdCompany());
             preparedStatement.setString(4, employee.getFullName());
             preparedStatement.setString(5, employee.getPhone());
-            preparedStatement.setString(6, employee.getSkype());
+            preparedStatement.setString(6, employee.getSkype().isEmpty() ?
+                    null : employee.getSkype());
             preparedStatement.executeUpdate();
         } finally {
             try {
@@ -329,7 +331,8 @@ public class JDBCSignUpDAO implements SignUpDAO {
             preparedStatement.setString(3, applicant.getFirstName());
             preparedStatement.setString(4, applicant.getLastName());
             preparedStatement.setString(5, applicant.getPhone());
-            preparedStatement.setString(6, applicant.getSkype());
+            preparedStatement.setString(6, applicant.getSkype().isEmpty() ?
+                    null : applicant.getSkype());
             preparedStatement.setString(7, applicant.getCountry());
             preparedStatement.setString(8, applicant.getCity());
             preparedStatement.setString(9, applicant.getUniversity());

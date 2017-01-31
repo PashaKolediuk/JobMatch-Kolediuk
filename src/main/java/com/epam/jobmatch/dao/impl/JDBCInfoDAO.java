@@ -39,8 +39,6 @@ public class JDBCInfoDAO implements InfoDAO {
     private static final String STATISTICS_INFORMATION = "SELECT (select COUNT(*) from applicant) AS applicant_count,\n" +
             "  (select COUNT(*) from company) AS company_count,\n" +
             "  (select COUNT(*) from vacancy) AS vacancy_count;";
-    /*private static final String RESULT_CREATION = "INSERT INTO result(idApplicant, idVacancy, stage) VALUES (?, ?, \"phone\")";*/
-
 
     private static final String SEARCH_VACANCY_COUNT = "SELECT COUNT(*) FROM vacancy INNER JOIN company ON vacancy.idCompany = company.idCompany\n" +
             " WHERE (vacancy.name LIKE CONCAT('%', ?, '%') OR vacancy.requiredSkills LIKE CONCAT('%', ?, '%')\n" +

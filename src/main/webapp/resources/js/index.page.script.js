@@ -7,7 +7,7 @@ $(window).scroll(function () {
 
 
     var smallLogoEndPos = 0;
-    var smallSpeed = (smallLogoHeight / bigLogoHeight * 2.5);
+    var smallSpeed = (smallLogoHeight / bigLogoHeight * 1.5);
 
     var ySmall = ($(window).scrollTop() * smallSpeed);
 
